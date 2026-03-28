@@ -1,12 +1,11 @@
-/** Update these with your real links before publishing. */
 export const site = {
-  name: "Shivanshu Pandey",
+  name: "Shivanshu",
   title: "Java Backend Engineer",
   tagline:
     "Building scalable backend systems with high performance and reliability",
-  email: "shivanshu.pandey@email.com",
-  linkedin: "https://www.linkedin.com/in/shivanshupandey",
-  github: "https://github.com/shivanshupandey",
-  githubUsername: "shivanshupandey",
+  email: "shivanshupandey1808@gmail.com",
+  linkedin: "https://www.linkedin.com/in/shivanshu-pandey-269a87204/",
+  github: "https://github.com/shivanshu1808",
+  githubUsername: "shivanshu1808",
   location: "India",
 } as const;
