@@ -76,7 +76,7 @@ export function Hero() {
           </Link>
           <a
             href="/resume.pdf"
-            download={`${site.name.replace(/\s+/g, "_")}_Resume.pdf`}
+            download={site.resumeDownloadFilename}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-full px-2 text-sm font-medium text-zinc-400 underline-offset-4 hover:text-cyan-300 hover:underline sm:ml-2"
           >
             <svg

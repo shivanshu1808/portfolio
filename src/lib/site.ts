@@ -8,4 +8,6 @@ export const site = {
   github: "https://github.com/shivanshu1808",
   githubUsername: "shivanshu1808",
   location: "India",
+  /** Served from /public/resume.pdf — browser download name */
+  resumeDownloadFilename: "Shivanshu_Java_Backend_Developer.pdf",
 } as const;

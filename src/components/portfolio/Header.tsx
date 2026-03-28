@@ -39,7 +39,7 @@ export function Header() {
           ))}
           <a
             href="/resume.pdf"
-            download={`${site.name.replace(/\s+/g, "_")}_Resume.pdf`}
+            download={site.resumeDownloadFilename}
             className="ml-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-sm text-zinc-200 transition-colors hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-100"
           >
             Resume
@@ -49,7 +49,7 @@ export function Header() {
         <div className="flex items-center gap-2 md:hidden">
           <a
             href="/resume.pdf"
-            download
+            download={site.resumeDownloadFilename}
             className="rounded-lg border border-white/[0.08] px-2.5 py-1.5 text-xs text-zinc-200"
           >
             CV
