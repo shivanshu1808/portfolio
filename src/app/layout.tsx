@@ -73,6 +73,7 @@ export default function RootLayout({
           <div className="site-ambient__glow-b" />
           <div className="site-ambient__glow-c" />
           <div className="site-ambient__grid" />
+          <div className="site-ambient__noise" />
         </div>
         <JsonLd />
         {children}

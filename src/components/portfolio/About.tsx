@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { site } from "@/lib/site";
 import { SectionHeading } from "./SectionHeading";
 import { fadeUp } from "./motion";
 
@@ -47,6 +49,7 @@ export function About() {
             </p>
           </div>
           <aside className="surface-card p-6 transition-all duration-300 hover:border-cyan-500/20 lg:sticky lg:top-28">
+           
             <p className="font-mono text-[10px] tracking-[0.2em] text-zinc-500 uppercase">
               Focus
             </p>

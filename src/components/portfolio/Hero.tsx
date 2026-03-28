@@ -1,33 +1,41 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { site } from "@/lib/site";
+
+const profileAlt = `${site.fullName} — Java backend developer, professional headshot`;
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-28 pb-24 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-36"
+      className="relative overflow-hidden pt-28 pb-28 sm:pt-36 sm:pb-32 lg:pt-44 lg:pb-40"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute -top-40 left-1/2 h-[480px] w-[780px] -translate-x-1/2 rounded-full bg-cyan-500/18 blur-[110px]" />
-        <div className="absolute top-32 right-[-100px] h-80 w-80 rounded-full bg-violet-500/12 blur-[100px]" />
-        <div className="absolute bottom-[-40px] left-[-60px] h-72 w-72 rounded-full bg-emerald-500/10 blur-[90px]" />
-        <div className="absolute top-1/2 left-1/2 h-[min(90vw,520px)] w-[min(90vw,520px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.04] bg-gradient-to-b from-white/[0.03] to-transparent opacity-60" />
+        <div className="animate-pulse-glow absolute -top-40 left-1/2 h-[480px] w-[780px] -translate-x-1/2 rounded-full bg-cyan-500/20 blur-[110px]" />
+        <div className="animate-pulse-glow-delayed absolute top-32 right-[-100px] h-80 w-80 rounded-full bg-violet-500/14 blur-[100px]" />
+        <div className="animate-pulse-glow-slow absolute bottom-[-40px] left-[-60px] h-72 w-72 rounded-full bg-emerald-500/12 blur-[90px]" />
+        <div className="absolute top-1/2 left-1/2 h-[min(90vw,520px)] w-[min(90vw,520px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-500/10 bg-gradient-to-b from-cyan-500/[0.06] via-white/[0.02] to-transparent opacity-70 shadow-[0_0_120px_-40px_rgba(34,211,238,0.15)]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(240px,18rem)] lg:items-center lg:gap-x-12 xl:gap-x-16">
+          <div>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 font-mono text-[11px] tracking-[0.18em] text-zinc-400 uppercase backdrop-blur-md sm:text-xs"
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-gradient-to-r from-white/[0.06] to-white/[0.02] px-3.5 py-2 font-mono text-[11px] tracking-[0.18em] text-zinc-300 uppercase shadow-lg shadow-black/30 backdrop-blur-md sm:text-xs"
         >
           <span
-            className="size-1.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.7)]"
+            className="relative flex size-2 shrink-0"
             aria-hidden
-          />
+          >
+            <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/40" />
+            <span className="relative inline-flex size-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
+          </span>
           {site.location} · 3+ yrs production · Open to backend roles
         </motion.p>
 
@@ -35,7 +43,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="max-w-[18ch] text-4xl font-semibold tracking-tight text-zinc-50 sm:max-w-none sm:text-5xl lg:text-6xl lg:leading-[1.05]"
+          className="max-w-[18ch] bg-gradient-to-br from-white via-zinc-100 to-zinc-500 bg-clip-text text-4xl font-semibold tracking-tight text-transparent sm:max-w-none sm:text-5xl lg:text-6xl lg:leading-[1.05]"
         >
           {site.fullName}
         </motion.h1>
@@ -44,7 +52,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-4 bg-gradient-to-r from-cyan-300 via-cyan-400 to-teal-400 bg-clip-text text-xl font-medium text-transparent sm:text-2xl"
+          className="mt-4 bg-gradient-to-r from-cyan-200 via-cyan-400 to-teal-400 bg-clip-text text-xl font-medium text-transparent sm:text-2xl"
         >
           {site.title}
         </motion.p>
@@ -66,7 +74,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.18 }}
-          className="mt-9 flex flex-wrap gap-2"
+          className="mt-9 flex flex-wrap gap-2.5"
           aria-label="Core stack"
         >
           {[
@@ -77,7 +85,7 @@ export function Hero() {
           ].map((label) => (
             <li
               key={label}
-              className="rounded-full border border-white/[0.1] bg-white/[0.04] px-3.5 py-1.5 font-mono text-[11px] text-zinc-300 shadow-sm shadow-black/20 backdrop-blur-sm transition-colors duration-300 hover:border-cyan-500/20 hover:bg-cyan-500/[0.06] sm:text-xs"
+              className="rounded-full border border-white/[0.1] bg-gradient-to-b from-white/[0.08] to-white/[0.02] px-3.5 py-1.5 font-mono text-[11px] text-zinc-200 shadow-md shadow-black/25 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400/30 hover:from-cyan-500/10 hover:shadow-cyan-950/40 sm:text-xs"
             >
               {label}
             </li>
@@ -88,26 +96,26 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.22 }}
-          className="mt-11 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
+          className="mt-12 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
         >
           <Link
             href="#projects"
-            className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-8 text-sm font-semibold text-zinc-950 shadow-lg shadow-cyan-500/25 transition-transform duration-200 hover:scale-[1.02] hover:shadow-cyan-500/35 active:scale-[0.98]"
+            className="inline-flex h-[3.25rem] items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 via-cyan-400 to-teal-400 px-9 text-sm font-semibold text-zinc-950 shadow-[0_0_32px_-4px_rgba(34,211,238,0.45)] ring-2 ring-cyan-300/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_0_40px_-4px_rgba(34,211,238,0.55)] active:scale-[0.98]"
           >
             Case studies
           </Link>
           <Link
             href="#contact"
-            className="inline-flex h-12 items-center justify-center rounded-full border border-white/[0.12] bg-white/[0.04] px-8 text-sm font-medium text-zinc-100 shadow-lg shadow-black/20 backdrop-blur-sm transition-all duration-200 hover:border-cyan-400/30 hover:bg-cyan-400/[0.08]"
+            className="inline-flex h-[3.25rem] items-center justify-center rounded-full border border-white/[0.14] bg-white/[0.05] px-9 text-sm font-medium text-zinc-100 shadow-lg shadow-black/30 backdrop-blur-md transition-all duration-200 hover:border-cyan-400/35 hover:bg-cyan-500/[0.1] hover:shadow-cyan-950/25"
           >
             Contact Me
           </Link>
           <a
             href="/resume.pdf"
             download={site.resumeDownloadFilename}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-full px-3 text-sm font-medium text-zinc-400 transition-colors hover:text-cyan-300 sm:ml-1"
+            className="inline-flex h-[3.25rem] items-center justify-center gap-2.5 rounded-full px-3 text-sm font-medium text-zinc-400 transition-colors hover:text-cyan-200 sm:ml-1"
           >
-            <span className="flex size-9 items-center justify-center rounded-full border border-white/[0.1] bg-white/[0.04] text-cyan-400/90">
+            <span className="flex size-10 items-center justify-center rounded-full border border-cyan-500/20 bg-gradient-to-br from-cyan-500/15 to-transparent text-cyan-300 shadow-inner shadow-black/20">
               <svg
                 className="size-4"
                 fill="none"
@@ -126,6 +134,38 @@ export function Hero() {
             Download resume
           </a>
         </motion.div>
+          </div>
+
+        <motion.figure
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
+          className="mx-auto mt-12 flex w-full max-w-[280px] justify-center lg:mx-0 lg:mt-0 lg:max-w-none lg:justify-end"
+        >
+          <div className="relative w-full">
+            <div
+              className="pointer-events-none absolute -inset-1 rounded-[1.35rem] bg-gradient-to-br from-cyan-400/35 via-transparent to-violet-500/25 opacity-90 blur-md"
+              aria-hidden
+            />
+            <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-zinc-900/50 shadow-[0_28px_64px_-24px_rgba(0,0,0,0.8),0_0_48px_-14px_rgba(34,211,238,0.2)] ring-1 ring-white/10">
+              <Image
+                src={site.profilePhotoSrc}
+                alt={profileAlt}
+                width={640}
+                height={640}
+                priority
+                sizes="(max-width: 1024px) 280px, 288px"
+                className="aspect-square w-full object-cover object-[center_20%]"
+              />
+            </div>
+          </div>
+        </motion.figure>
+        </div>
+
+        <div
+          className="mx-auto mt-16 h-px max-w-md bg-gradient-to-r from-transparent via-cyan-500/25 to-transparent sm:mt-20 lg:mt-20"
+          aria-hidden
+        />
       </div>
     </section>
   );
