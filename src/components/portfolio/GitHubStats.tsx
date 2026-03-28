@@ -34,8 +34,8 @@ async function fetchGithubUser(): Promise<GhUser | null> {
 
 function Stat({ value, label }: { value: string | number; label: string }) {
   return (
-    <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 text-center sm:text-left">
-      <p className="font-mono text-2xl font-semibold tracking-tight text-cyan-400 tabular-nums">
+    <div className="rounded-xl border border-white/[0.08] bg-gradient-to-br from-white/[0.05] to-transparent px-4 py-3 text-center shadow-inner shadow-black/20 sm:text-left">
+      <p className="font-mono text-2xl font-semibold tracking-tight text-cyan-300 tabular-nums">
         {value}
       </p>
       <p className="mt-0.5 text-xs tracking-wide text-zinc-500 uppercase">
@@ -44,6 +44,19 @@ function Stat({ value, label }: { value: string | number; label: string }) {
     </div>
   );
 }
+
+const readmeChecklist = [
+  "One-screen README: problem, architecture sketch (Mermaid OK), how to run, env vars, API surface.",
+  "docs/ with sequence or C4-lite diagram for the highest-traffic path.",
+  "OpenAPI / Springdoc or Postman collection for public endpoints.",
+  "ADRs or short “why we chose X over Y” for cache, Kafka, or DB split.",
+];
+
+const highlightRepos = [
+  "Building-Control — strongest alignment with IoT / control / backend story.",
+  "A production-style Spring Boot service with tests + Dockerfile + CI badge.",
+  "One React or Next.js client that exercises your real API contracts.",
+];
 
 export async function GitHubStats() {
   const gh = await fetchGithubUser();
@@ -55,27 +68,20 @@ export async function GitHubStats() {
   return (
     <section
       aria-label="GitHub profile"
-      className="border-t border-white/[0.06] py-16 sm:py-20"
+      className="border-t border-white/[0.08] py-20 sm:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-2xl">
-          <p className="mb-2 text-sm font-medium tracking-widest text-cyan-400/90 uppercase">
+          <p className="mb-2 text-xs font-medium tracking-[0.2em] text-cyan-400/90 uppercase sm:text-sm">
             GitHub
-          </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">
-            Open source & code
-          </h2>
-          <p className="mt-3 text-base leading-relaxed text-zinc-400">
-            Public profile and activity—loaded directly from GitHub’s API, no
-            third‑party widgets.
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0f1117]">
-          <div className="flex flex-col gap-8 p-6 sm:p-8 lg:flex-row lg:items-center lg:gap-10">
+        <div className="surface-card overflow-hidden">
+          <div className="flex flex-col gap-8 border-b border-white/[0.06] bg-white/[0.02] p-6 sm:p-8 lg:flex-row lg:items-center lg:gap-10">
             {gh ? (
               <>
-                <div className="relative mx-auto size-28 shrink-0 overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-800 sm:mx-0 sm:size-32">
+                <div className="relative mx-auto size-28 shrink-0 overflow-hidden rounded-2xl border border-cyan-500/20 bg-zinc-900 shadow-lg shadow-cyan-950/30 ring-2 ring-cyan-500/10 sm:mx-0 sm:size-32">
                   <Image
                     src={gh.avatar_url}
                     alt={`${gh.name ?? gh.login} GitHub avatar`}
@@ -100,7 +106,7 @@ export async function GitHubStats() {
                     </p>
                   ) : (
                     <p className="mt-2 text-sm text-zinc-500">
-                      Backend projects, experiments, and learning in public.
+                      Backend systems, public experiments, interview-ready depth.
                     </p>
                   )}
                 </div>
@@ -111,8 +117,7 @@ export async function GitHubStats() {
                   @{site.githubUsername}
                 </p>
                 <p className="mt-2 text-sm text-zinc-400">
-                  Profile preview unavailable right now. Open GitHub for full
-                  activity.
+                  Profile preview unavailable. Open GitHub for activity.
                 </p>
               </div>
             )}
@@ -121,14 +126,14 @@ export async function GitHubStats() {
               href={site.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 shrink-0 items-center justify-center rounded-full bg-cyan-400 px-6 text-sm font-semibold text-zinc-950 transition-transform hover:scale-[1.02] active:scale-[0.98] lg:self-center"
+              className="inline-flex h-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-6 text-sm font-semibold text-zinc-950 shadow-lg shadow-cyan-500/20 transition-transform hover:scale-[1.02] active:scale-[0.98] lg:self-center"
             >
-              View on GitHub
+              Open GitHub
             </a>
           </div>
 
           {gh ? (
-            <div className="grid grid-cols-2 gap-3 border-t border-white/[0.06] p-6 sm:grid-cols-4 sm:p-8 sm:pt-6">
+            <div className="grid grid-cols-2 gap-3 bg-[#030406]/50 p-6 sm:grid-cols-4 sm:p-8 sm:pt-6">
               <Stat value={gh.public_repos} label="Public repos" />
               <Stat value={gh.followers} label="Followers" />
               <Stat value={gh.following} label="Following" />
@@ -138,6 +143,29 @@ export async function GitHubStats() {
               />
             </div>
           ) : null}
+        </div>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="surface-card p-6 transition-all duration-300 hover:border-cyan-500/15 sm:p-8">
+            <h3 className="text-sm font-semibold tracking-tight text-zinc-50">
+              README &amp; docs playbook
+            </h3>
+            <ul className="mt-4 list-disc space-y-2.5 pl-4 text-sm leading-relaxed text-zinc-400 marker:text-zinc-600">
+              {readmeChecklist.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="surface-card p-6 transition-all duration-300 hover:border-cyan-500/15 sm:p-8">
+            <h3 className="text-sm font-semibold tracking-tight text-zinc-50">
+              Key repositories
+            </h3>
+            <ul className="mt-4 list-disc space-y-2.5 pl-4 text-sm leading-relaxed text-zinc-400 marker:text-zinc-600">
+              {highlightRepos.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

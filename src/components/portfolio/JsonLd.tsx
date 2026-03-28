@@ -1,15 +1,16 @@
-import { site } from "@/lib/site";
+import { getPublicSiteUrl, site } from "@/lib/site";
 
 export function JsonLd() {
-  const base = process.env.NEXT_PUBLIC_SITE_URL;
+  const base = getPublicSiteUrl();
 
   const data = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: site.name,
+    name: site.fullName,
+    alternateName: site.name,
     jobTitle: site.title,
     description: site.tagline,
-    ...(base ? { url: base } : {}),
+    url: base,
     sameAs: [site.linkedin, site.github],
     email: site.email,
     knowsAbout: [

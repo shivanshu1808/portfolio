@@ -1,23 +1,28 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { ViewCounter } from "./ViewCounter";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-white/[0.06] py-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 text-center text-sm text-zinc-500 sm:flex-row sm:text-left sm:px-6 lg:px-8">
-        <p>
-          © {year} {site.name}. Crafted with Next.js & Tailwind CSS.
+    <footer className="relative z-10 border-t border-white/[0.08] bg-[#030406]/80 py-12 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 text-center text-sm text-zinc-500 sm:flex-row sm:text-left sm:px-6 lg:px-8">
+        <p className="max-w-md leading-relaxed">
+          © {year} {site.fullName}. Crafted with Next.js & Tailwind CSS.
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Link href="#top" className="hover:text-zinc-300">
+        <ViewCounter />
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <Link
+            href="#top"
+            className="rounded-full px-3 py-1 text-zinc-400 transition-colors hover:bg-white/[0.06] hover:text-zinc-100"
+          >
             Back to top
           </Link>
           <a
             href={site.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-zinc-300"
+            className="rounded-full px-3 py-1 text-zinc-400 transition-colors hover:bg-white/[0.06] hover:text-zinc-100"
           >
             GitHub
           </a>
@@ -25,7 +30,7 @@ export function Footer() {
             href={site.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-zinc-300"
+            className="rounded-full px-3 py-1 text-zinc-400 transition-colors hover:bg-white/[0.06] hover:text-zinc-100"
           >
             LinkedIn
           </a>

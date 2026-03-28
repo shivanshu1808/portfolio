@@ -69,13 +69,13 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 border-t border-white/[0.06] py-20 sm:py-24"
+      className="scroll-mt-24 border-t border-white/[0.08] py-22 sm:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Contact"
           title="Let’s build reliable systems together"
-          description="Reach out for backend roles, architecture discussions, or collaborations. I typically respond within one business day."
+          description="Open to backend roles, system design discussions, and engineering collaborations. I typically respond within one business day."
         />
 
         <motion.div {...fadeUp} className="grid gap-4 sm:grid-cols-3">
@@ -87,9 +87,9 @@ export function Contact() {
               rel={
                 l.href.startsWith("mailto:") ? undefined : "noopener noreferrer"
               }
-              className="group flex flex-col rounded-2xl border border-white/[0.06] bg-[#0f1117] p-6 transition-colors hover:border-cyan-400/25 hover:bg-cyan-400/[0.04]"
+              className="group surface-card flex flex-col p-6 transition-all duration-300 hover:border-cyan-400/30 hover:shadow-[0_0_40px_-16px_rgba(34,211,238,0.15)]"
             >
-              <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-white/[0.04] text-cyan-400 transition-colors group-hover:bg-cyan-400/15">
+              <div className="mb-4 flex size-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.05] text-cyan-300 transition-all group-hover:border-cyan-400/25 group-hover:bg-cyan-400/10">
                 {l.icon}
               </div>
               <span className="font-mono text-xs tracking-wider text-zinc-500 uppercase">
