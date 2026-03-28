@@ -1,23 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/portfolio/JsonLd";
 import { WebAnalytics } from "@/components/portfolio/WebAnalytics";
 import { getPublicSiteUrl, site } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
 });
 
 const siteUrl = getPublicSiteUrl();
 const defaultTitle = `${site.fullName} · ${site.title}`;
-const description = `${site.tagline} ${site.fullName} — Java, Spring Boot, microservices, AWS, 3+ years at CGI.`;
+const description = `${site.tagline}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,6 +33,7 @@ export const metadata: Metadata = {
     "Kafka",
     site.fullName,
     "CGI",
+    "Bengaluru",
   ],
   authors: [{ name: site.fullName, url: siteUrl }],
   creator: site.fullName,
@@ -49,7 +46,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: defaultTitle,
     description,
   },
@@ -63,18 +60,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased dark`}
-    >
-      <body className="relative min-h-full bg-[#030406] font-sans text-zinc-100">
-        <div className="site-ambient" aria-hidden>
-          <div className="site-ambient__glow-a" />
-          <div className="site-ambient__glow-b" />
-          <div className="site-ambient__glow-c" />
-          <div className="site-ambient__grid" />
-          <div className="site-ambient__noise" />
-        </div>
+    <html lang="en" className={`${dmSans.variable} h-full`}>
+      <body className="min-h-full font-sans antialiased">
         <JsonLd />
         {children}
         <WebAnalytics />
